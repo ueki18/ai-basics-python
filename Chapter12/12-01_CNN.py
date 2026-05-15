@@ -56,6 +56,10 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 # ---------------------------
 for epoch in range(3):
 
+    running_loss = 0.0
+    correct = 0
+    total = 0
+
     for images, labels in train_loader:
 
         # 予測
@@ -73,7 +77,26 @@ for epoch in range(3):
         # パラメータ更新
         optimizer.step()
 
-    print(f"Epoch {epoch+1}, Loss: {loss.item():.4f}")
+        # lossを加算
+        running_loss += loss.item()
+
+        # 精度計算
+        _, predicted = torch.max(outputs, 1)
+
+        total += labels.size(0)
+        correct += (predicted == labels).sum().item()
+
+    # epochごとの平均loss
+    epoch_loss = running_loss / len(train_loader)
+
+    # epochごとの精度
+    epoch_accuracy = correct / total
+
+    print(
+        f"Epoch {epoch+1}, "
+        f"Loss: {epoch_loss:.4f}, "
+        f"Accuracy: {epoch_accuracy:.4f}"
+    )
 
 # ---------------------------
 # 評価
@@ -84,9 +107,10 @@ total = 0
 with torch.no_grad():
     for images, labels in test_loader:
         outputs = model(images)
+
         _, predicted = torch.max(outputs, 1)
 
         total += labels.size(0)
         correct += (predicted == labels).sum().item()
 
-print("Accuracy:", correct / total)
+print("Test Accuracy:", correct / total)
