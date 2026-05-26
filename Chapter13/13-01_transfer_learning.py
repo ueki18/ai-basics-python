@@ -25,7 +25,8 @@ val_loader = DataLoader(val_dataset, batch_size=16)
 # ---------------------------
 # モデル（ResNet-18）
 # ---------------------------
-model = models.resnet18(pretrained=True)
+weights = models.ResNet18_Weights.DEFAULT
+model = models.resnet18(weights=weights)
 
 # 特徴抽出部分の重みをすべて固定
 for param in model.parameters():
