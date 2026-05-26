@@ -1,7 +1,8 @@
 from ultralytics import YOLO
 
 # YOLO26セグメンテーションモデルの読み込み（自動ダウンロード）
-model = YOLO("yolo26n-seg.pt")
+model = YOLO("yolo26n-seg.pt")  # インスタンスセグメンテーション
+# model = YOLO("yolo26n-sem.pt")  # セマンティックセグメンテーションの場合
 
 # 画像に対してセグメンテーションを実行
 results = model("sample.jpg")
