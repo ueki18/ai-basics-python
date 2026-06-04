@@ -8,4 +8,6 @@ df = pd.DataFrame(
     columns=iris.feature_names
 )
 
+df["species"] = [iris.target_names[i] for i in iris.target]
+
 print(df.head())
