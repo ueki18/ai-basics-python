@@ -10,5 +10,5 @@ df = pd.DataFrame(
 
 df["species"] = [iris.target_names[i] for i in iris.target]
 
-print(df.info())
+df.info()
 print(df.isnull().sum())
