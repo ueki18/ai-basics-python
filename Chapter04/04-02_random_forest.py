@@ -10,14 +10,14 @@ y = iris.target
 
 # データ分割（再現性のためrandom_stateを固定）
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.3, random_state=42
+    X, y, test_size=0.3, random_state=0
 )
 
 # モデル（少しチューニング）
 model = RandomForestClassifier(
-    n_estimators=200,     # 木の数を増やす
-    max_depth=5,          # 過学習防止
-    random_state=42
+    n_estimators=200,
+    max_depth=5,
+    random_state=0
 )
 
 # 学習
