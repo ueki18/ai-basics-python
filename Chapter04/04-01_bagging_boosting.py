@@ -12,14 +12,16 @@ X_train, X_test, y_train, y_test = train_test_split(
 # バギング
 bagging = BaggingClassifier(
     estimator=DecisionTreeClassifier(),
-    n_estimators=10
+    n_estimators=10,
+    random_state=0
 )
 bagging.fit(X_train, y_train)
 
 # ブースティング（AdaBoost）
 boosting = AdaBoostClassifier(
     estimator=DecisionTreeClassifier(max_depth=1),
-    n_estimators=10
+    n_estimators=10,
+    random_state=0
 )
 boosting.fit(X_train, y_train)
 
