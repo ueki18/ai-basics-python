@@ -7,8 +7,8 @@ from sklearn.metrics import accuracy_score
 dataset = load_dataset("imdb")
 
 # 学習用・テスト用データを取り出してシャッフル
-train_data = dataset["train"].shuffle(seed=42)
-test_data = dataset["test"].shuffle(seed=42)
+train_data = dataset["train"].shuffle(seed=0)
+test_data = dataset["test"].shuffle(seed=0)
 
 X_train = train_data["text"][:2000]
 y_train = train_data["label"][:2000]
