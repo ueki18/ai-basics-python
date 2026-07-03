@@ -8,7 +8,7 @@ dataset = api.load("text8")
 model = Word2Vec(
     dataset,
     vector_size=100,  # 単語ベクトルの次元数
-    window=5,         # 前後何単語を文脈として考慮するか
+    window=5,         # 前後それぞれ5単語を文脈として利用
     min_count=5,      # 出現回数が5回未満の単語は無視
     workers=4,        # 並列処理数（CPUコア数に依存）
     sg=1              # Skip-gramを指定
