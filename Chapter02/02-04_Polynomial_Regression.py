@@ -8,7 +8,7 @@ X = np.array([[1], [2], [3], [4], [5]])
 y = np.array([1, 4, 9, 16, 25])
 
 # 特徴量を2乗まで拡張する
-poly = PolynomialFeatures(degree=2)
+poly = PolynomialFeatures(degree=2, include_bias=False)
 X_poly = poly.fit_transform(X)
 
 # 線形回帰と同じ手順で学習する
